@@ -1,0 +1,40 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 102rem;
+  margin: 0 auto 12rem;
+}
+
+.container h2 {
+  color: var(--text-dark-primary);
+  font-size: 2.4rem;
+  font-weight: 300;
+  margin-bottom: 4rem;
+}
+
+.thumbnails {
+  width: 100%;
+  display: flex;
+  gap: 2rem;
+}
+
+.btn-container {
+  margin: 0 auto;
+  margin-top: 4rem;
+}
+
+@media (max-width: 1120px) {
+  .container {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    max-width: 80%;
+  }
+  .thumbnails {
+    flex-direction: column;
+    gap: 5rem;
+  }
+}

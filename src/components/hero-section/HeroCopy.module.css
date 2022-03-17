@@ -1,0 +1,76 @@
+.main-text {
+  grid-column: 1 / 8;
+  grid-row: 2 / 3;
+  padding-top: 11rem;
+}
+
+.main-text p {
+  margin: 2rem 0 5rem 0;
+  font-size: 1.6rem;
+  line-height: 2.6rem;
+  color: var(--text-dark-primary);
+  padding-right: 5rem;
+  animation-duration: 2s;
+  animation-name: fadein;
+}
+
+h1 {
+  font-size: 6rem;
+  display: inline-block;
+  padding-left: 0.4rem;
+
+  background-image: linear-gradient(180deg, transparent 40%, var(--yellow-primary) 0);
+  background-repeat: no-repeat;
+  text-decoration: none;
+  color: black;
+  transition: .5s;
+
+  animation-duration: 3s;
+  animation-name: fadein;
+}
+
+@media (max-width: 1120px) {
+  .main-text {
+    grid-column: 1 / 9;
+  }
+  .main-text p {
+    width: 80%;
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .main-text {
+    grid-column: 1 / -1;
+    grid-row: 3 / 4;
+    padding-top: 5rem;
+    text-align: center;
+  }
+
+  h1 {
+    margin-bottom: 2rem;
+  }
+
+  .main-text p {
+    font-size: 1.6rem;
+    width: 60%;
+    margin: 0 auto 3rem auto;
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 5rem;
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

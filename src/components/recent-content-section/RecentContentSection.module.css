@@ -1,0 +1,15 @@
+.recent-section {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    background-color: var(--bg-dark);
+    clip-path: polygon(0 0%, 100% 0%, 100% 100%, 0% 92%);
+    margin-top: -6.5rem;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 102rem;
+    text-align: center;
+    padding: 16rem 0 0 0;
+}

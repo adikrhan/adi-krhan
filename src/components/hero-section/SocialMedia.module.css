@@ -1,0 +1,25 @@
+.icon-list {
+  display: flex;
+  gap: 1.2rem;
+  grid-column: 9 / 10;
+  margin-bottom: 1.5rem;
+  justify-content: end;
+  margin-top: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.icon-list__icon {
+  font-size: 2rem;
+  opacity: 0.3;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.icon-list__icon:hover {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+@media (max-width: 900px) {
+
+}
