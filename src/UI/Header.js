@@ -1,11 +1,12 @@
 import SizeContext from "../store/size-context";
 import { useState, useContext } from "react";
 import classes from "./Header.module.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import MobileMenu from "./MobileMenu";
 
 const Header = () => {
+  const navigate = useNavigate();
   const sizeCtx = useContext(SizeContext);
 
   const width = sizeCtx.width;
@@ -20,31 +21,77 @@ const Header = () => {
     setIsMenuShown(false);
   };
 
+  const logoClickHandler = () => {
+    navigate("../home", { replace: false });
+  };
+
   return (
     <header className={classes.header}>
-      <div className={classes.logo}><strong>adi</strong>krhan</div>
+      <div className={classes.logo} onClick={logoClickHandler}>
+        <strong>adi</strong>krhan
+      </div>
       {width > 700 && (
         <nav className={classes.nav}>
           <ul>
             <li>
               <NavLink
                 to="/about"
-                className={(isActive) => (isActive ? " active" : "")}
+                style={({ isActive }) => ({
+                  borderBottom: isActive
+                    ? "4px solid var(--yellow-primary)"
+                    : "none",
+                })}
               >
                 ABOUT
               </NavLink>
             </li>
             <li>
-              <NavLink to="/portfolio">PORTFOLIO</NavLink>
+              <NavLink
+                to="/portfolio"
+                style={({ isActive }) => ({
+                  borderBottom: isActive
+                    ? "4px solid var(--yellow-primary)"
+                    : "none",
+                })}
+              >
+                PORTFOLIO
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/gallery">GALLERY</NavLink>
+              <NavLink
+                to="/gallery"
+                style={({ isActive }) => ({
+                  borderBottom: isActive
+                    ? "4px solid var(--yellow-primary)"
+                    : "none",
+                })}
+              >
+                GALLERY
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/blog">BLOG</NavLink>
+              <NavLink
+                to="/blog"
+                style={({ isActive }) => ({
+                  borderBottom: isActive
+                    ? "4px solid var(--yellow-primary)"
+                    : "none",
+                })}
+              >
+                BLOG
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/contact">CONTACT</NavLink>
+              <NavLink
+                to="/contact"
+                style={({ isActive }) => ({
+                  borderBottom: isActive
+                    ? "4px solid var(--yellow-primary)"
+                    : "none",
+                })}
+              >
+                CONTACT
+              </NavLink>
             </li>
           </ul>
         </nav>

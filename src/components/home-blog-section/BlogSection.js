@@ -29,7 +29,7 @@ const BlogSection = () => {
       <h2>LATEST BLOGPOSTS</h2>
       <div className={classes.thumbnails}>
         {BLOG_DUMMY.map((post) => {
-          return <BlogThumbnail post={post} />;
+          return <BlogThumbnail post={post} key={post.src} />;
         })}
       </div>
       <div className={classes["btn-container"]}>

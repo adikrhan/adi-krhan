@@ -1,0 +1,94 @@
+.main-container {
+  margin: 10rem auto;
+  display: grid;
+  grid-template-columns: 1fr repeat(12, minmax(0, 85px)) 1fr;
+  row-gap: 4rem;
+}
+
+.head {
+  grid-column: 2 / 14;
+}
+
+.head h2 {
+  font-size: 3rem;
+}
+
+.early,
+.education,
+.career,
+.values {
+  grid-column: 1 / -1;
+}
+
+.career {
+  background-color: var(--bg-dark);
+  clip-path: polygon(0 6%, 100% 0, 100% 100%, 0 94%);
+  padding: 8rem 0;
+  color: var(--text-light);
+  margin: 3rem 0;
+}
+
+.career .copy {
+  color: var(--text-light);
+}
+
+.container {
+  max-width: 102rem;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  margin: 0 auto;
+}
+
+.headline {
+  grid-column: 1 / 4;
+  font-size: 2.4rem;
+  font-weight: 300;
+}
+
+.copy {
+  font-size: 1.5rem;
+  color: var(--text-dark-primary);
+  line-height: 2rem;
+  grid-column: 4 / -1;
+}
+
+.img-container {
+  grid-column: 5 / 14;
+}
+
+.image {
+  width: 100%;
+}
+
+@media (max-width: 1120px) {
+  .main-container {
+    grid-template-columns: 5% repeat(12, minmax(0, 85px)) 5%;
+  }
+  .container {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 700px) {
+  .main-container {
+    grid-template-columns: 10% repeat(12, minmax(0, 85px)) 10%;
+  }
+  .container {
+    max-width: 80%;
+    gap: 2rem;
+  }
+  .head {
+    text-align: center;
+  }
+  .headline {
+    grid-column: 1 / -1;
+    text-align: center;
+  }
+  .copy {
+    grid-column: 1 / -1;
+  }
+  .img-container {
+    grid-column: 2 / 14;
+  }
+}
+

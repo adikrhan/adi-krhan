@@ -3,6 +3,8 @@ import classes from "./MobileMenu.module.css";
 import { NavLink } from "react-router-dom";
 import { FaTimes } from "react-icons/fa";
 
+const navLinks = ["about", "portfolio", "gallery", "blog", "contact"];
+
 const MobileMenu = (props) => {
   return ReactDOM.createPortal(
     <div className={classes.backdrop}>
@@ -11,26 +13,19 @@ const MobileMenu = (props) => {
       </div>
       <nav className={classes.nav}>
         <ul>
-          <li>
-            <NavLink
-              to="/about"
-              className={(isActive) => (isActive ? " active" : "")}
-            >
-              ABOUT
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/portfolio">PORTFOLIO</NavLink>
-          </li>
-          <li>
-            <NavLink to="/gallery">GALLERY</NavLink>
-          </li>
-          <li>
-            <NavLink to="/blog">BLOG</NavLink>
-          </li>
-          <li>
-            <NavLink to="/contact">CONTACT</NavLink>
-          </li>
+          {navLinks.map((link) => {
+            return (
+              <li>
+                <NavLink
+                  to={`/${link}`}
+                  className={(isActive) => (isActive ? " active" : "")}
+                  onClick={props.onClick}
+                >
+                  {link.toUpperCase()}
+                </NavLink>
+              </li>
+            );
+          })}
         </ul>
       </nav>
     </div>,

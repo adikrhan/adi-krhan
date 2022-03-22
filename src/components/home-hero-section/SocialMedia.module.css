@@ -20,6 +20,10 @@
   transition: 0.2s;
 }
 
+a {
+  color: inherit;
+}
+
 @media (max-width: 900px) {
 
 }

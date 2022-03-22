@@ -2,13 +2,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  grid-column: 1 / -1;
+  max-width: 102rem;
+  margin: 5rem auto 3rem;
 }
 
 .logo {
   font-size: 2rem;
   color: var(--text-dark-secondary);
   letter-spacing: .1rem;
+  cursor: pointer;
 }
 
 .logo::after {
@@ -19,10 +21,6 @@
   display: inline-block;
   border: .1rem solid rgba(0,0,0,0.6);
   margin-left: .1rem;
-}
-
-.nav {
-  padding-right: 1rem;
 }
 
 .nav ul {
@@ -53,7 +51,7 @@
   transition: transform 0.3s;
 }
 
-.nav a:hover::after {
+.nav a:not(.active):hover::after {
   transform-origin: bottom left;
   transform: scaleX(1);
 }
@@ -68,8 +66,17 @@
   opacity: 1;
 }
 
+@media (max-width: 1120px) {
+  .header {
+    max-width: 90%;
+  }
+}
+
+
 @media (max-width: 700px) {
   .header {
+    max-width: 80%;
     align-items: flex-start;
+    margin-bottom: 0;
   }
 }

@@ -4,7 +4,6 @@
 
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  grid-template-rows: 100px 1fr;
   column-gap: 2rem;
   margin: 0 auto 14rem auto;
 }
@@ -15,7 +14,7 @@
 
 .img-and-social {
   grid-column: 8 / 13;
-  grid-row: 2 / 3;
+  grid-row: 1 / 2;
 }
 
 @media (max-width: 1120px) {
@@ -27,7 +26,7 @@
 @media (max-width: 900px) {
   .hero-section {
     max-width: 80%;
-    grid-template-rows: min-content min-content min-content;
+    grid-template-rows: repeat(2, min-content);
     column-gap: 2rem;
     margin: 0 auto 14rem auto;
   }
