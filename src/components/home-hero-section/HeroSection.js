@@ -14,13 +14,13 @@ const HeroSection = () => {
   const classesStr = height < 800 ? `${classes['hero-section']}` : `${classes['hero-section']} + ${classes['hero-section-mt']}`;
 
   return (
-    <div className={classesStr}>
+    <section className={classesStr}>
       <HeroCopy />
       <div className={classes["img-and-social"]}>
         <HeroImage />
         <SocialMedia />
       </div>
-    </div>
+    </section>
   );
 };
 

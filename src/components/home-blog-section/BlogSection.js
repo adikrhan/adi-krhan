@@ -25,7 +25,7 @@ const BLOG_DUMMY = [
 
 const BlogSection = () => {
   return (
-    <div className={classes.container}>
+    <section className={classes.container}>
       <h2>LATEST BLOGPOSTS</h2>
       <div className={classes.thumbnails}>
         {BLOG_DUMMY.map((post) => {
@@ -35,7 +35,7 @@ const BlogSection = () => {
       <div className={classes["btn-container"]}>
         <Button type="text" text="More posts" bgColor="yellow-bg" />
       </div>
-    </div>
+    </section>
   );
 };
 

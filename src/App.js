@@ -10,15 +10,15 @@ import Footer from "./UI/Footer";
 function App() {
   return (
     <SizeProvider>
+      <Header />
       <Layout>
-        <Header />
         <Routes>
           <Route path="/" element={<Navigate replace to="/home" />} />
           <Route path="/home" element={<Home />} />
           <Route path="/about" element={<About />} />
         </Routes>
-        <Footer />
       </Layout>
+      <Footer />
     </SizeProvider>
   );
 }
