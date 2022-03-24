@@ -19,6 +19,7 @@ const RecentContentHeader = (props) => {
         {types.map((type) => {
           return (
             <li
+              key={type}
               onClick={typeClickHandler}
               className={contentType.toUpperCase() === type.toUpperCase() ? `${classes.active}` : ""}
             >

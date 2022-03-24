@@ -1,10 +1,15 @@
 import { useState, Fragment } from "react";
+import ReactDOM from "react-dom";
 import classes from "./Modal.module.css";
 import ClipLoader from "react-spinners/ClipLoader";
 
 const Modal = (props) => {
   console.log(props, window.devicePixelRatio);
   const [isLoading, setIsLoading] = useState(true);
+
+  const clickBackdropHandler = () => {
+    props.onBackdropClick();
+  };
 
   const srcSet =
     `https://res.cloudinary.com/dau7fdnej/image/upload/w_280/${props.publicId} 280w, ` +
@@ -15,35 +20,38 @@ const Modal = (props) => {
     `https://res.cloudinary.com/dau7fdnej/image/upload/w_2100/${props.publicId} 2100w `;
   const sizes = "(max-width: 800px) 80vw, (max-width: 1200px) 900px, 1200px";
 
-  return (
-    <Fragment>
-      {isLoading && (
-        <ClipLoader
-          color="rgba(255,255,255,0.5)"
-          loading={isLoading}
-          css={`
-            display: block;
-            margin: 0 auto;
-          `}
-          size={100}
-        />
-      )}
-      <div
-        className={classes.modal}
-        style={{ display: isLoading ? "none" : "block" }}
-      >
-        <div className={classes["img-container"]}>
-          <img
-            src={props.url}
-            srcSet={srcSet}
-            sizes={sizes}
-            alt=""
-            className={classes.image}
-            onLoad={() => setIsLoading(false)}
+  return ReactDOM.createPortal(
+    <div className={classes.backdrop} onClick={clickBackdropHandler}>
+      <Fragment>
+        {isLoading && (
+          <ClipLoader
+            color="rgba(255,255,255,0.5)"
+            loading={isLoading}
+            css={`
+              display: block;
+              margin: 0 auto;
+            `}
+            size={100}
           />
+        )}
+        <div
+          className={classes.modal}
+          style={{ display: isLoading ? "none" : "block" }}
+        >
+          <div className={classes["img-container"]}>
+            <img
+              src={props.url}
+              srcSet={srcSet}
+              sizes={sizes}
+              alt=""
+              className={classes.image}
+              onLoad={() => setIsLoading(false)}
+            />
+          </div>
         </div>
-      </div>
-    </Fragment>
+      </Fragment>
+    </div>,
+    document.getElementById("modal")
   );
 };
 

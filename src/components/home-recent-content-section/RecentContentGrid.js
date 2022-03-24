@@ -1,5 +1,4 @@
 import React, { useContext, Fragment, useEffect, useState } from "react";
-import ReactDOM from "react-dom";
 import SizeContext from "../../store/size-context";
 import GridLoader from "react-spinners/GridLoader";
 import classes from "./RecentContentGrid.module.css";
@@ -100,38 +99,35 @@ const RecentContentHeader = (props) => {
         <div className={classes.container}>
           {images.map((img, i) => {
             return (
-                <div key={i} className={classes.item} onClick={() => clickImageHandler(img)}>
-                  {width > 600 && (
-                    <Fragment>
-                      <div className={classes.overlay}></div>
-                      <div className={classes["overlay-info"]}>
-                        <h4>{img.caption}</h4>
-                        <p>{img.date}</p>
-                      </div>
-                    </Fragment>
-                  )}
-                  <img
-                    src={img["url"]}
-                    srcSet={img.srcSet}
-                    sizes={img.sizes}
-                    alt={img.caption}
-                    className={classes.image}
-                  />
-                </div>
+              <div
+                key={i}
+                className={classes.item}
+                onClick={() => clickImageHandler(img)}
+              >
+                {width > 600 && (
+                  <Fragment>
+                    <div className={classes.overlay}></div>
+                    <div className={classes["overlay-info"]}>
+                      <h4>{img.caption}</h4>
+                      <p>{img.date}</p>
+                    </div>
+                  </Fragment>
+                )}
+                <img
+                  src={img["url"]}
+                  srcSet={img.srcSet}
+                  sizes={img.sizes}
+                  alt={img.caption}
+                  className={classes.image}
+                />
+              </div>
             );
           })}
         </div>
       )}
-      {showModal &&
-        ReactDOM.createPortal(
-          <div className={classes.backdrop} onClick={clickBackdropHandler}>
-            <Modal
-              url={clickedImgProps.url}
-              publicId={clickedImgProps.publicId}
-            />
-          </div>,
-          document.getElementById("modal")
-        )}
+      {showModal && (
+        <Modal url={clickedImgProps.url} publicId={clickedImgProps.publicId} onBackdropClick={clickBackdropHandler} />
+      )}
     </Fragment>
   );
 };

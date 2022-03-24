@@ -1,5 +1,5 @@
 .main-container {
-  margin: 10rem auto;
+  margin: 6rem auto;
   display: grid;
   grid-template-columns: 1fr repeat(12, minmax(0, 85px)) 1fr;
   row-gap: 4rem;

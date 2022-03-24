@@ -4,6 +4,9 @@ import classes from "./Header.module.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import MobileMenu from "./MobileMenu";
+import dot from "../assets/dot.png";
+
+const navLinks = ["about", "portfolio", "gallery", "blog", "contact"];
 
 const Header = () => {
   const navigate = useNavigate();
@@ -30,69 +33,28 @@ const Header = () => {
       <div className={classes.logo} onClick={logoClickHandler}>
         <strong>adi</strong>krhan
       </div>
+
       {width > 700 && (
         <nav className={classes.nav}>
           <ul>
-            <li>
-              <NavLink
-                to="/about"
-                style={({ isActive }) => ({
-                  borderBottom: isActive
-                    ? "4px solid var(--yellow-primary)"
-                    : "none",
-                })}
-              >
-                ABOUT
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/portfolio"
-                style={({ isActive }) => ({
-                  borderBottom: isActive
-                    ? "4px solid var(--yellow-primary)"
-                    : "none",
-                })}
-              >
-                PORTFOLIO
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/gallery"
-                style={({ isActive }) => ({
-                  borderBottom: isActive
-                    ? "4px solid var(--yellow-primary)"
-                    : "none",
-                })}
-              >
-                GALLERY
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/blog"
-                style={({ isActive }) => ({
-                  borderBottom: isActive
-                    ? "4px solid var(--yellow-primary)"
-                    : "none",
-                })}
-              >
-                BLOG
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/contact"
-                style={({ isActive }) => ({
-                  borderBottom: isActive
-                    ? "4px solid var(--yellow-primary)"
-                    : "none",
-                })}
-              >
-                CONTACT
-              </NavLink>
-            </li>
+            {navLinks.map((link) => {
+              return (
+                <li>
+                  <NavLink
+                    to={`/${link}`}
+                    style={({ isActive }) => ({
+                      backgroundImage: isActive ? `url(${dot})` : "none",
+                      backgroundRepeat: "no-repeat",
+                      backgroundPositionX: "100%",
+                      backgroundPositionY: "8px",
+                      backgroundBlendMode: "hard-light"
+                    })}
+                  >
+                    {link.toUpperCase()}
+                  </NavLink>
+                </li>
+              );
+            })}
           </ul>
         </nav>
       )}

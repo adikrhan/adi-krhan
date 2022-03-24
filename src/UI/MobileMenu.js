@@ -2,6 +2,7 @@ import ReactDOM from "react-dom";
 import classes from "./MobileMenu.module.css";
 import { NavLink } from "react-router-dom";
 import { FaTimes } from "react-icons/fa";
+import dot from "../assets/dot.png";
 
 const navLinks = ["about", "portfolio", "gallery", "blog", "contact"];
 
@@ -18,7 +19,12 @@ const MobileMenu = (props) => {
               <li>
                 <NavLink
                   to={`/${link}`}
-                  className={(isActive) => (isActive ? " active" : "")}
+                  style={({ isActive }) => ({
+                    backgroundImage: isActive ? `url(${dot})` : "none",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPositionX: "100%",
+                    backgroundPositionY: "15px",
+                  })}
                   onClick={props.onClick}
                 >
                   {link.toUpperCase()}
