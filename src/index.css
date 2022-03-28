@@ -13,7 +13,7 @@
   --yellow-primary: #f9f24f;
   --bg-dark: #353535;
   --text-dark-primary: #666666;
-  --text-dark-secondary: #1e1e1e;
+  --text-dark-secondary: #333;
   --text-light: #dddddd;
 }
 
@@ -42,6 +42,17 @@ body {
 
 ul {
   list-style: none;
+}
+
+body::-webkit-scrollbar {
+  width: 15px; /* Mostly for vertical scrollbars */
+  height: 10px; /* Mostly for horizontal scrollbars */
+}
+body::-webkit-scrollbar-thumb { /* Foreground */
+  background: var(--yellow-primary);
+}
+body::-webkit-scrollbar-track { /* Background */
+  background: var(--text-dark-primary);
 }
 
 @media (max-width: 1120px) {

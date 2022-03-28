@@ -39,7 +39,7 @@ const Header = () => {
           <ul>
             {navLinks.map((link) => {
               return (
-                <li>
+                <li key={link}>
                   <NavLink
                     to={`/${link}`}
                     style={({ isActive }) => ({

@@ -21,6 +21,7 @@ const getSrcSet = (properties) => {
 
 const GalleryContent = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
   const [photos, setPhotos] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState([0]);
@@ -63,6 +64,7 @@ const GalleryContent = () => {
 
   useEffect(() => {
     setIsLoading(true);
+    setError(false);
     fetch(`https://res.cloudinary.com/dau7fdnej/image/list/photo.json`)
       .then((response) => response.json())
       .then((data) => {
@@ -116,6 +118,10 @@ const GalleryContent = () => {
         });
         setPhotos(tempImgs);
         setIsLoading(false);
+      })
+      .catch((error) => {
+        setError(`There was an error: ${error.message}`);
+        setIsLoading(false);
       });
   }, [currentPage, selectedCategory]);
 
@@ -145,13 +151,23 @@ const GalleryContent = () => {
     </div>
   );
 
+  const errorMessage = (
+    <div className={classes["error-msg"]}>
+      <div className={classes["error-code"]}>404</div>
+      <div className={classes["error-text"]}>
+        Oops, something went wrong :&#40; <br></br> Please try again later!
+      </div>
+    </div>
+  );
+
   return (
     <Fragment>
       {" "}
       <div className={classes["main-container"]}>
         {header}
         <div className={classes.gallery}>
-          {!isLoading && (
+          {error && errorMessage}
+          {!isLoading && !error && (
             <div className={classes.categories}>
               <ul>
                 {categories.map((category) => {
@@ -195,7 +211,7 @@ const GalleryContent = () => {
             </div>
           )}
         </div>
-        <div className={classes.pagination}>
+        {!error && <div className={classes.pagination}>
           <ul>
             <FaChevronLeft
               onClick={() => arrowClickHandler("left")}
@@ -225,7 +241,7 @@ const GalleryContent = () => {
               }
             />
           </ul>
-        </div>
+        </div>}
       </div>
       {showModal && (
         <Modal

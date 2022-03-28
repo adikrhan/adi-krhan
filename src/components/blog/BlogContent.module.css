@@ -1,0 +1,206 @@
+.main-container {
+  margin: 6rem auto;
+  display: grid;
+  grid-template-columns: 1fr repeat(12, minmax(0, 85px)) 1fr;
+  row-gap: 5rem;
+}
+
+.header {
+  grid-column: 2 / 14;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.header h2 {
+  font-size: 3rem;
+}
+
+.header .categories-ul {
+  display: flex;
+  gap: 3rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.header .categories-ul li {
+  font-size: 1.2rem;
+  padding: 0.8rem;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.header .categories-ul li:hover {
+  box-shadow: inset 0px -4px 0px 0px var(--yellow-primary);
+  transition: 0.2s;
+}
+
+.active {
+  box-shadow: inset 0px -4px 0px 0px var(--yellow-primary);
+}
+
+.featured-post {
+  grid-column: 2 / 14;
+  display: flex;
+  gap: 2rem;
+}
+
+.img-container {
+  width: 50%;
+  box-shadow: 0 2px 3px 0px rgb(0 0 0 / 10%);
+  transition: 0.4s;
+}
+
+.img-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.featured-text {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding-top: 1rem;
+}
+
+.featured-text h3 {
+  cursor: pointer;
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+.featured-text .meta {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: gray;
+}
+
+.featured-text p {
+  font-size: 1.4rem;
+  color: var(--text-dark-secondary);
+  line-height: 140%;
+}
+
+.more {
+  align-self: end;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 1.5rem;
+}
+
+.blogposts {
+  grid-column: 2 / 14;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5%;
+  animation-name: fadein;
+  animation-duration: 0.6s;
+}
+
+.pagination {
+  grid-column: 2 / 14;
+  margin: 0 auto;
+  padding: 8rem 0 2rem 0;
+}
+
+.pagination ul {
+  padding: 0 2rem;
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.pagination li {
+  font-size: 1.4rem;
+  font-weight: 400;
+  cursor: pointer;
+  color: rgb(155, 155, 155);
+  border: 1px solid rgb(231, 231, 231);
+  padding: 1rem 1.4rem;
+  transition: 0.2s;
+}
+
+.pagination li:not(.active-page):hover {
+  background-color: rgb(231, 231, 231);
+  transition: 0.2s;
+}
+
+.active-page {
+  background-color: var(--yellow-primary);
+}
+
+.arrow {
+  color: rgb(231, 231, 231);
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.arrow:hover {
+  color: black;
+  transition: 0.2s;
+}
+
+.disabled {
+  cursor: default;
+  opacity: 0;
+}
+
+.loader-container {
+  grid-column: 2 / 14;
+  display: flex;
+  height: 500px;
+  align-items: center;
+}
+
+.error-msg {
+  grid-column: 2 / 14;
+  font-size: 3rem;
+  text-align: center;
+  padding: 4rem 0 0 0;
+  color: var(--text-dark-primary);
+  font-weight: 300;
+  display: grid;
+  gap: 2rem;
+}
+
+.error-code {
+  font-size: 14rem;
+  font-weight: 600;
+  color: lightgray;
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1120px) {
+  .main-container {
+    grid-template-columns: 5% repeat(12, minmax(0, 85px)) 5%;
+  }
+}
+
+@media (max-width: 700px){
+  .main-container {
+    grid-template-columns: 10% repeat(12, minmax(0, 85px)) 10%;
+  }
+}
+
+@media (max-width: 600px){
+  .blogposts {
+    gap: 6rem;
+  }
+
+  .header {
+    flex-direction: row;
+    gap: 0;
+    align-items: center;
+  }
+}

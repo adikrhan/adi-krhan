@@ -1,5 +1,4 @@
 .container {
-  padding-bottom: 20rem;
   max-width: 102rem;
   margin: 0 auto;
 
@@ -106,5 +105,11 @@
     max-width: 80%;
     grid-template-columns: repeat(2, minmax(150px, 1fr));
     grid-template-rows: repeat(3, 30vw);
+  }
+}
+
+@media (min-width: 1600px) {
+  .container {
+    grid-template-rows: repeat(2, 15vw);
   }
 }

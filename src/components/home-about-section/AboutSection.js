@@ -4,10 +4,7 @@ import Button from "../../UI/Button";
 const AboutSection = () => {
   return (
     <section className={classes["about-section"]}>
-      <div className={classes.bg}></div>
-      <div className={classes.bg2 + ' ' + classes.bg}></div>
-      <div className={classes.bg + ' ' + classes.bg3}></div>
-
+      <div className={classes['bg-overlay']}></div>
       <div className={classes.container}>
         <h2>MY STORY</h2>
         <p>

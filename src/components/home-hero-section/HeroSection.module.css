@@ -44,3 +44,9 @@
     margin: 10rem auto 0;
   }
 }
+
+@media (min-width: 1600px) {
+  .hero-section {
+    padding: 14rem 0;
+  }
+}

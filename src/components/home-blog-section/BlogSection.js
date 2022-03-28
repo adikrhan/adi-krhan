@@ -1,4 +1,5 @@
 import { useEffect, useState, Fragment } from "react";
+import { NavLink } from "react-router-dom";
 import classes from "./BlogSection.module.css";
 import BlogThumbnail from "./BlogThumbnail";
 import Button from "../../UI/Button";
@@ -49,11 +50,19 @@ const BlogSection = () => {
         <Fragment>
           <div className={classes.thumbnails}>
             {data.data.map((post) => {
-              return <BlogThumbnail post={post} key={post.published} />;
+              return (
+                <BlogThumbnail
+                  post={post}
+                  key={post.published}
+                  colWidthLg="33%"
+                />
+              );
             })}
           </div>
           <div className={classes["btn-container"]}>
-            <Button type="text" text="More posts"/>
+            <NavLink to="/blog">
+              <Button type="text" text="More posts" />
+            </NavLink>
           </div>
         </Fragment>
       )}
