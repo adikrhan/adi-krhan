@@ -22,10 +22,11 @@ const BlogSection = () => {
         page_size: 3,
       });
       setData(response.data);
+      setIsLoading(false);
     } catch (e) {
       setError(`There was an error: ${e.message}`);
+      setIsLoading(false);
     }
-    setIsLoading(false);
   };
 
   useEffect(() => {

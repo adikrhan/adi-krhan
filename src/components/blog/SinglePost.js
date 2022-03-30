@@ -39,7 +39,7 @@ const SinglePost = () => {
 
   useEffect(() => {
     fetchPost();
-  });
+  }, []);
 
   const spinner = (
     <div className={classes["loader-container"]}>
