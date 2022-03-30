@@ -3,12 +3,15 @@ import moment from "moment";
 import classes from "./BlogThumbnail.module.css";
 import { FaClock, FaTag } from 'react-icons/fa';
 import SizeContext from '../../store/size-context';
+import { useNavigate } from "react-router-dom";
 
 const BlogThumbnail = (props) => {
   const [text, setText] = useState(props.post.summary);
   const sizeCtx = useContext(SizeContext);
 
   const windowWidth = sizeCtx.width;
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const summary = props.post.summary;
@@ -18,11 +21,11 @@ const BlogThumbnail = (props) => {
       const index = summary.slice(0, 90).lastIndexOf(" ");
       setText(`${summary.slice(0, index) + "..."}`);
     }
-  }, []);
+  }, [props.post.summary]);
 
   return (
     <div className={classes.container} style={{width: `${windowWidth >= 600 ? props.colWidthLg : '100%'}`}}>
-      <div className={classes["img-container"]}>
+      <div className={classes["img-container"]} onClick={() => navigate(`../blog/${props.post.slug}`)}>
         <div className={classes['overlay-meta']}>
           <FaClock />
           <span>{moment(props.post.published).format("LL")}</span>

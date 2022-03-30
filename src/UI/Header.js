@@ -4,7 +4,6 @@ import classes from "./Header.module.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import MobileMenu from "./MobileMenu";
-import dot from "../assets/dot.png";
 
 const navLinks = ["about", "portfolio", "gallery", "blog", "contact"];
 
@@ -43,11 +42,7 @@ const Header = () => {
                   <NavLink
                     to={`/${link}`}
                     style={({ isActive }) => ({
-                      backgroundImage: isActive ? `url(${dot})` : "none",
-                      backgroundRepeat: "no-repeat",
-                      backgroundPositionX: "100%",
-                      backgroundPositionY: "8px",
-                      backgroundBlendMode: "hard-light"
+                      boxShadow: isActive ? '0 3px 0 0 var(--yellow-primary)' : ""
                     })}
                   >
                     {link.toUpperCase()}

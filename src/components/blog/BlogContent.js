@@ -13,7 +13,7 @@ const BlogContent = () => {
   const windowSizeCtx = useContext(SizeContext);
   const windowWidth = windowSizeCtx.width;
 
-  const categories = ["All", "Personal", "Travel", "Books", "Web development"];
+  const [categories, setCategories] = useState(["All"]);
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -34,6 +34,19 @@ const BlogContent = () => {
     });
   };
 
+  const fetchCategories = async () => {
+    try {
+      const response = await butter.category.list({});
+      const blogCategories = [];
+      response["data"].data.forEach((item) => {
+        blogCategories.push(item["name"]);
+      });
+      setCategories(["All", ...blogCategories]);
+    } catch (error) {
+      console.log("Could not fetch categories");
+    }
+  };
+
   const fetchPosts = async () => {
     setIsLoading(true);
     setError(false);
@@ -42,7 +55,8 @@ const BlogContent = () => {
       const response = await butter.post.list({
         page: currentPage,
         page_size: 4,
-        tag_slug: selectedCategory !== 'All' ? selectedCategory.toLowerCase() : ''
+        category_slug:
+          selectedCategory !== "All" ? selectedCategory.toLowerCase() : "",
       });
 
       const nrOfPages = [
@@ -51,18 +65,25 @@ const BlogContent = () => {
       setTotalPages(nrOfPages);
 
       setData(response.data["data"]);
-      console.log(response.data);
+      setIsLoading(false);
+      
     } catch (e) {
       setError(`There was an error: ${e.message}`);
+      setIsLoading(false);
     }
-    setIsLoading(false);
   };
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
 
   useEffect(() => {
     fetchPosts();
   }, [currentPage, selectedCategory]);
 
   const categoryClickHandler = (category) => {
+    if (selectedCategory === category) return;
+    setCurrentPage(1);
     setSelectedCategory(category);
   };
 
@@ -70,7 +91,7 @@ const BlogContent = () => {
     <div className={classes.header}>
       <h2>BLOG</h2>
       {windowWidth > 600 && (
-        <ul className={classes['categories-ul']}>
+        <ul className={classes["categories-ul"]}>
           {categories.map((category) => {
             return (
               <li
@@ -87,7 +108,11 @@ const BlogContent = () => {
         </ul>
       )}
       {windowWidth <= 600 && (
-        <DropDownMenu items={categories} selectedItem={selectedCategory} onListItemClick={categoryClickHandler} />
+        <DropDownMenu
+          items={categories}
+          selectedItem={selectedCategory}
+          onListItemClick={categoryClickHandler}
+        />
       )}
     </div>
   );
@@ -120,7 +145,7 @@ const BlogContent = () => {
       {header}
       {error && errorMessage}
       {isLoading && spinner}
-      {!isLoading && data && (
+      {!isLoading && data && !error && (
         <div className={classes.blogposts}>
           {data.map((post) => {
             return (

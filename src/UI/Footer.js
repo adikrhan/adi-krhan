@@ -1,9 +1,12 @@
 import classes from "./Footer.module.css";
-import { FaArrowUp } from "react-icons/fa";
+import { FaArrowUp, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import { NavLink, useNavigate } from "react-router-dom";
+
+const navLinks = ["about", "portfolio", "gallery", "blog", "contact"];
 
 const Footer = () => {
   const btnClickHandler = () => {
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
   };
 
   return (
@@ -17,17 +20,36 @@ const Footer = () => {
         <div className={classes.container}>
           <div className={classes["footer-copy"]}>
             <p>&copy; Adi Krhan 2022</p>
-            <p>adikrhan.com</p>
           </div>
-          <div className={classes.nav}>
+          <nav className={classes.nav}>
             <ul>
-              <li>Home</li>
-              <li>About</li>
-              <li>Portfolio</li>
-              <li>Gallery</li>
-              <li>Blog</li>
-              <li>Contact</li>
+              {navLinks.map((link) => {
+                return (
+                  <li key={link}>
+                    <NavLink
+                      to={`/${link}`}
+                    >
+                      {link.toUpperCase()}
+                    </NavLink>
+                  </li>
+                );
+              })}
             </ul>
+          </nav>
+          <div className={classes.social}>
+            <div className={classes.icon}>
+              <a href="https://www.instagram.com/adiiik/" target="_blank">
+                <FaInstagram />
+              </a>
+            </div>
+            <div className={classes.icon}>
+              <a
+                href="https://www.linkedin.com/in/adi-krhan-068239bb/"
+                target="_blank"
+              >
+                <FaLinkedinIn />
+              </a>
+            </div>
           </div>
         </div>
       </div>

@@ -2,9 +2,8 @@ import ReactDOM from "react-dom";
 import classes from "./MobileMenu.module.css";
 import { NavLink } from "react-router-dom";
 import { FaTimes } from "react-icons/fa";
-import dot from "../assets/dot.png";
 
-const navLinks = ["about", "portfolio", "gallery", "blog", "contact"];
+const navLinks = ["home", "about", "portfolio", "gallery", "blog", "contact"];
 
 const MobileMenu = (props) => {
   return ReactDOM.createPortal(
@@ -20,10 +19,7 @@ const MobileMenu = (props) => {
                 <NavLink
                   to={`/${link}`}
                   style={({ isActive }) => ({
-                    backgroundImage: isActive ? `url(${dot})` : "none",
-                    backgroundRepeat: "no-repeat",
-                    backgroundPositionX: "100%",
-                    backgroundPositionY: "15px",
+                    boxShadow: isActive ? '0 3px 0 0 var(--yellow-primary)' : ""
                   })}
                   onClick={props.onClick}
                 >
